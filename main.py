@@ -27,8 +27,8 @@ service = build('drive', 'v3', credentials=creds)
 def proccess():
     #making archive
     with ZipFile('traccar.zip', 'w') as fl:
-        fl.write('database.vm.db')
-        fl.write('traccar.xml')
+        fl.write('/opt/traccar/data/database.vm.db')
+        fl.write('/opt/traccar/traccar.xml')
 
     #uploading file
     service.files().create(body={'name': f'traccar_{dt.now().strftime("%d.%m.%Y")}.zip'}, media_body=MediaFileUpload('traccar.zip',\
