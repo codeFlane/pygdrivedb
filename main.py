@@ -43,3 +43,4 @@ def proccess():
         response.remove(response[0])
 
 scheduler.add_job(target=proccess, tz='US/Central', when=['*|04:00'])
+scheduler.run()
