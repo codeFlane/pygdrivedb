@@ -8,7 +8,7 @@ from simple_scheduler.event import event_scheduler as scheduler
 
 from os.path import exists
 from datetime import datetime as dt
-from zipfile import ZipFile
+from zipfile import ZipFile, ZIP_BZIP2
 
 #authorization
 creds = None
@@ -26,7 +26,7 @@ service = build('drive', 'v3', credentials=creds)
 
 def proccess():
     #making archive
-    with ZipFile('traccar.zip', 'w') as fl:
+    with ZipFile('traccar.zip', 'w', compression=ZIP_BZIP2) as fl:
         fl.write('/opt/traccar/data/database.vm.db')
         fl.write('/opt/traccar/traccar.xml')
 
